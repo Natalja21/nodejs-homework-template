@@ -8,15 +8,26 @@ const { schemes } = require("../../models/contacts");
 const router = express.Router();
 router.get("/", authenticate, ctrlWrapper(ctrl.getAllContacts));
 
-router.get("/:contactId", authenticate, isValidId, ctrlWrapper(ctrl.getByIdContact));
+router.get(
+  "/:contactId",
+  authenticate,
+  isValidId,
+  ctrlWrapper(ctrl.getByIdContact)
+);
 
 router.post(
-  "/", authenticate,
+  "/",
+  authenticate,
   validateBody(schemes.addSchema),
   ctrlWrapper(ctrl.createContact)
 );
 
-router.delete("/:contactId", authenticate, isValidId, ctrlWrapper(ctrl.removeByIdContact));
+router.delete(
+  "/:contactId",
+  authenticate,
+  isValidId,
+  ctrlWrapper(ctrl.removeByIdContact)
+);
 
 router.put(
   "/:contactId",
