@@ -29,5 +29,6 @@ router.patch(
     ctrlWrapper(ctrl.updateSubscriptionUser)
 );
 // update avatar
-router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatarUser))
+router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatarUser));
+
 module.exports = router;
