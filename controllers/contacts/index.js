@@ -4,6 +4,7 @@ const createContact = require("./createContact");
 const updateByIdContact = require("./updateByIdContact");
 const removeByIdContact = require("./removeByIdContact");
 const updateStatusContact = require("./updateStatusContact");
+
 module.exports = {
     getAllContacts,
     getByIdContact,

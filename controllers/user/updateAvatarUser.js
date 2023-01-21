@@ -10,12 +10,10 @@ const updateAvatarUser = async (req, res) => {
     const { path: tempUpload, originalname } = req.file;
 
     await Jimp.read(`${tempUpload}`)
-        .then(image => {
-            return image
-                .resize(250, 250)
-                .write(`${tempUpload}`);
+        .then((image) => {
+            return image.resize(250, 250).write(`${tempUpload}`);
         })
-        .catch(err => {
+        .catch((err) => {
             console.error(err.message);
         });
 
@@ -31,7 +29,7 @@ const updateAvatarUser = async (req, res) => {
     );
     res.json({
         avatarURL,
-    })
+    });
 };
 
 module.exports = updateAvatarUser;

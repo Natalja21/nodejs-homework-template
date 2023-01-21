@@ -2,14 +2,14 @@ const registerUser = require("./registerUser");
 const loginUser = require("./loginUser");
 const getCurrent = require("./getCurrent");
 const logoutUser = require("./logoutUser");
-const updateSubscriptionUser = require("./updateSubscriptionUser");
-const updateAvatarUser = require("./updateAvatarUser");
+const verifyEmailUser = require("./verifyEmailUser");
+const resendVerifyEmail = require("./resendVerifyEmail");
 
 module.exports = {
     registerUser,
     loginUser,
     getCurrent,
     logoutUser,
-    updateSubscriptionUser,
-    updateAvatarUser,
+    verifyEmailUser,
+    resendVerifyEmail,
 };

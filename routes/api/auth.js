@@ -3,6 +3,7 @@ const { ctrlWrapper } = require("../../helpers");
 const { validateBody, authenticate, upload } = require("../../middlewares");
 const { schemas } = require("../../models/user");
 const ctrl = require("../../controllers/auth");
+const ctrUser = require("../../controllers/user");
 
 const router = express.Router();
 // signup
@@ -11,6 +12,15 @@ router.post(
     validateBody(schemas.registerShema),
     ctrlWrapper(ctrl.registerUser)
 );
+// verify
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmailUser));
+// resend varify email
+router.post(
+    "/verify/",
+    validateBody(schemas.verifyEmailShema),
+    ctrlWrapper(ctrl.resendVerifyEmail)
+);
+
 // signin
 router.post(
     "/login",
@@ -26,9 +36,14 @@ router.patch(
     "/subscription",
     authenticate,
     validateBody(schemas.subscriptionJoiSchema),
-    ctrlWrapper(ctrl.updateSubscriptionUser)
+    ctrlWrapper(ctrUser.updateSubscriptionUser)
 );
 // update avatar
-router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatarUser));
+router.patch(
+    "/avatars",
+    authenticate,
+    upload.single("avatar"),
+    ctrlWrapper(ctrUser.updateAvatarUser)
+);
 
 module.exports = router;
